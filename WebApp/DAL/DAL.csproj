@@ -52,8 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
+    <Compile Include="ConfirmCode.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Job.cs" />
+    <Compile Include="Repos.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

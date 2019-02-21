@@ -22,17 +22,18 @@ namespace DAL
 
          public virtual DbSet<User> Users { get; set; }
          public virtual DbSet<Job> Jobs { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
+         public virtual DbSet<Category> Categories { get; set; }
+         public virtual DbSet<ConfirmCode> ConfirmCodes { get; set; }
     }
     class MyContextInitializer : DropCreateDatabaseAlways<Context>
     {
         protected override void Seed(Context db)
         {
 
-            db.Users.Add(new User { AvaPath = null, ID=1, City = "RIVNE", Email = "Freak@team.com", FullName = "Freak Admin Lox", IsEmployee = false, Password = "Admin", Raiting = 1 });
-            db.Users.Add(new User { AvaPath = null, City = "RIVNE", Email = "Vadim@team.com", FullName = "Vadim Designer GG", IsEmployee = true, Password = "Pass", Raiting = 1 });
-            db.Categories.Add(new Category { Name = "IT",ID=1 });
-            db.Jobs.Add(new Job { Name = "C# DEV", CategoryID = 1, Date = DateTime.Now, Description = "Create course work", Salary = 9999, UserOwnerID = 1 });
+            db.Users.Add(new User() { AvaPath = null, City = "RIVNE", Email = "Freak@team.com", FullName = "Freak Admin Lox", IsEmployee = false, Password = "Admin", Raiting = 1 });
+            db.Users.Add(new User() { AvaPath = null, City = "RIVNE", Email = "Vadim@team.com", FullName = "Vadim Designer GG", IsEmployee = true, Password = "Pass", Raiting = 1 });
+            db.Categories.Add(new Category() { Name = "IT",});
+            db.Jobs.Add(new Job() { Name = "C# DEV", CategoryID = 1, Date = DateTime.Now, Description = "Create course work", Salary = 9999, UserOwnerID = 1 });
             db.SaveChanges();
         }
     }
