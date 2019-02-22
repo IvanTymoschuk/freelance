@@ -1,7 +1,45 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "CreateAD";
+
 }
+<style>
+  .stCardInput{
+    height:150px;
+    text-emphasis-color:lightgreen;
+  }
+   
 
-<h2>CreateAD</h2>
+</style>
 
+    <div class="text-center">
+        <h1> CreateAdvertisment</h1>
+
+    </div>
+    <div class="float-left" style="width : 30%;">
+        <h3> Before you add your advertisement you must do few this requirements:</h3>
+        <ul>
+            <li>You must be logged in.</li>
+            <li>You must confirm your e-mail.</li>
+            <li>You must be registered on the site for more than a week.</li>
+        </ul>
+    </div>
+
+
+    <div class="float-left" style="width: 65%; margin-left:10px;">
+
+
+        <div class="card">
+            <div class="card-header">
+               <p style="color:lightgreen"> In this field, you must enter short description about theme of the project or the task.</p>
+            </div>
+            <div class="card-content p-2">
+                <input class="stCardInput" maxlength="3000"  type="text" data-role="input" data-prepend="Description: ">
+            </div>
+            <div class="card-footer">
+                <p style="color:lightgreen">The text should be less than 3000 symbols</p>
+            </div>
+        </div>
+
+
+
+    </div>
