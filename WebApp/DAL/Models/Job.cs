@@ -13,8 +13,9 @@ namespace DAL
         public decimal Salary { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
+        public City City { get; set; }
 
-        public int CategoryID { get; set; }
-        public int  UserOwnerID { get; set; }
+        public Category Category { get; set; }
+        public User  UserOwner { get; set; }
     }
 }

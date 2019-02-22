@@ -1,0 +1,55 @@
+﻿@model WebApp.Models.JobsListModel
+@{
+    ViewBag.Title = "JobsList";
+}
+
+
+
+
+<div class="grid">
+    <div class="row">
+    
+        <h2 > JobsList</h2>
+    </div>
+    <div class="row container ">
+        <div class="cell-4">
+            <select data-role="select">
+                @foreach (var el in Model.Categories)
+                {
+                    <option>@el.Name</option>
+                }
+            </select>
+        </div>
+        <div class="cell-4">
+            <select data-role="select">
+                @foreach (var el in Model.Cities)
+                {
+                    <option>@el.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+
+        <table class="container table">
+            <thead>
+            <tr>
+                <td>Name</td>
+                <td>Salary</td>
+                <td>Category</td>
+
+            </tr>
+            </thead>
+            <tbody></tbody>
+            @foreach (var el in Model.jobs)
+            {
+                <tr>
+                    <td>@el.Name</td>
+                    <td>@el.Salary</td>
+                    <td>@el.Category.Name</td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>

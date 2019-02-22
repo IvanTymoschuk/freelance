@@ -1,6 +1,7 @@
 namespace DAL
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
 
@@ -15,6 +16,7 @@ namespace DAL
         public Context()
             : base("name=Context")
         {
+            Database.SetInitializer(new MyContextInitializer());
         }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
@@ -24,16 +26,29 @@ namespace DAL
          public virtual DbSet<Job> Jobs { get; set; }
          public virtual DbSet<Category> Categories { get; set; }
          public virtual DbSet<ConfirmCode> ConfirmCodes { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
+
     }
     class MyContextInitializer : DropCreateDatabaseAlways<Context>
     {
         protected override void Seed(Context db)
         {
+            IList<User> users = new List<User>();
+            IList<Job> jobs = new List<Job>();
 
-            db.Users.Add(new User() { AvaPath = null, City = "RIVNE", Email = "Freak@team.com", FullName = "Freak Admin Lox", IsEmployee = false, Password = "Admin", Raiting = 1 });
-            db.Users.Add(new User() { AvaPath = null, City = "RIVNE", Email = "Vadim@team.com", FullName = "Vadim Designer GG", IsEmployee = true, Password = "Pass", Raiting = 1 });
-            db.Categories.Add(new Category() { Name = "IT",});
-            db.Jobs.Add(new Job() { Name = "C# DEV", CategoryID = 1, Date = DateTime.Now, Description = "Create course work", Salary = 9999, UserOwnerID = 1 });
+            var city = new City() { Name = "Rivne" };
+
+
+            users.Add(new User() { AvaPath = null, City = city, Email = "Freak@team.com", FullName = "Freak Admin Lox", IsEmployee = false, Password = "Admin", Raiting = 1 });
+            users.Add(new User() { AvaPath = null, City = city, Email = "Vadim@team.com", FullName = "Vadim Designer GG", IsEmployee = true, Password = "Pass", Raiting = 1 });
+          
+
+            var cat= new Category() { Name = "IT" };
+           
+           jobs.Add(new Job() { Name = "C# DEV",Category = cat,City = city, Date = DateTime.Now, Description = "Create course work", Salary = 9999 });
+
+            db.Users.AddRange(users);
+            db.Jobs.AddRange(jobs);
             db.SaveChanges();
         }
     }

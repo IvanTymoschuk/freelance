@@ -4,15 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DAL;
+using WebApp.Models;
+
 namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        Context ctx = new Context();
         public ActionResult Index()
         {
-            Context ctx = new Context();
-            ctx.Categories.Add(new Category { Name = "Test" });
-            ctx.SaveChanges();
+           
             return View();
         }
 
@@ -28,6 +29,19 @@ namespace WebApp.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult JobsList()
+        {
+
+            var model = new JobsListModel()
+            {
+                jobs = ctx.Jobs.Include("Category").Include("City").ToList(),
+                Categories = ctx.Categories.ToList(),
+                Cities = ctx.Cities.ToList()
+            };
+
+            return View(model);
         }
     }
 }
