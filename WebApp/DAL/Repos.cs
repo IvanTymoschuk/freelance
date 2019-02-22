@@ -29,6 +29,7 @@ namespace DAL
             return Set.ToList();
         }
 
+
         public void Update(T Entity)
         {
             db.Entry(Entity).State = EntityState.Modified;
