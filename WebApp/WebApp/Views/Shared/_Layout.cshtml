@@ -10,13 +10,21 @@
 </head>
 <body>
 
-    <ul class="h-menu active-toggle  bg-dark  fg-red ">
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        <li>@Html.ActionLink("CreateAdvertisement", "CreateAD", "Home")</li>
-    </ul>
-
+    <div data-role="appbar" data-expand-point="md"  class="bg-black fg-white app-bar fixed-top pos-absolute">
+        <a href="#" class="brand no-hover">
+            <span>
+                Freelance<sup>.com</sup>
+            </span>
+        </a>
+        
+        <ul class="app-bar-menu">
+            <li  onmouseover="this.style.backgroundColor='#555';" onmouseout="this.style.backgroundColor='black';">@Html.ActionLink("Home", "Index", "Home")</li>
+            <li onmouseover="this.style.backgroundColor='#555';" onmouseout="this.style.backgroundColor='black';">@Html.ActionLink("About", "About", "Home")</li>
+            <li onmouseover="this.style.backgroundColor='#555';" onmouseout="this.style.backgroundColor='black';">@Html.ActionLink("Contact", "Contact", "Home")</lionmouseover="this.style.backgroundColor='#555';">
+        </ul>
+    </div>
+    <br />
+    <br />
     @RenderBody()
 
     @Scripts.Render("~/bundles/MetroUI")

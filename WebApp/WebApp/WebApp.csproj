@@ -235,6 +235,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\JobsList.cshtml" />
     <Content Include="Views\Home\UserInfo.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Home\CreateAD.cshtml" />
   </ItemGroup>
   <ItemGroup>
