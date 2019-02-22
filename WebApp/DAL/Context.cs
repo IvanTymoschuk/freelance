@@ -29,7 +29,7 @@ namespace DAL
         public virtual DbSet<City> Cities { get; set; }
 
     }
-    class MyContextInitializer : DropCreateDatabaseAlways<Context>
+    class MyContextInitializer : DropCreateDatabaseIfModelChanges<Context>
     {
         protected override void Seed(Context db)
         {

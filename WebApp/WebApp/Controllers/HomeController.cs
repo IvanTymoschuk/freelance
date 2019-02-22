@@ -10,11 +10,40 @@ namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        Context ctx = new Context();
+
         public ActionResult Index()
         {
            
             return View();
+        }
+        public ActionResult UserInfo(int id)
+        {
+            //try
+            //{
+                using (Context ctx = new Context())
+                {
+                    User user = ctx.Users.Include("City").FirstOrDefault(x => x.ID == id);
+                    if (user == null)
+                    {
+                        return HttpNotFound($"User with id [ {id} ] NOT FOUND");
+                    }
+                    UserInfoModel model = new UserInfoModel();
+                    model.user = user;
+                    var job = ctx.Jobs.FirstOrDefault(x => x.UserOwner.ID == user.ID);
+                    if (job != null)
+                    {
+                        foreach (var el in ctx.Jobs)
+                            if (el.UserOwner == user)
+                                model.jobs.Add(el);
+                    
+                    }
+                    return View(model);
+                }
+            //}
+            //catch (Exception)
+            //{
+            //    return new HttpStatusCodeResult(500, "ID IS NO VALID");
+            //}
         }
 
         public ActionResult About()
@@ -33,15 +62,19 @@ namespace WebApp.Controllers
 
         public ActionResult JobsList()
         {
-
-            var model = new JobsListModel()
+            using (Context ctx = new Context())
             {
-                jobs = ctx.Jobs.Include("Category").Include("City").ToList(),
-                Categories = ctx.Categories.ToList(),
-                Cities = ctx.Cities.ToList()
+                var model = new JobsListModel()
+                {
+
+                    jobs = ctx.Jobs.Include("Category").Include("City").ToList(),
+                    Categories = ctx.Categories.ToList(),
+                    Cities = ctx.Cities.ToList()
+                };
+                return View(model);
             };
 
-            return View(model);
+          
         }
     }
 }

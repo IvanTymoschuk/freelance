@@ -9,7 +9,7 @@ namespace DAL
     public class ConfirmCode
     {
         public int ID { get; set; }
-        public int UserID { get; set; }
+        public User user { get; set; }
         public int Code { get; set; }
     }
 }
