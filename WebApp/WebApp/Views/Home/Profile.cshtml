@@ -1,21 +1,42 @@
-﻿
+﻿@model WebApp.ProfileModel
 @{
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    <br />
-    <br />
-    <div class="row">
-        <ul data-tabs-position="vertical right" data-role="tabs">
-            <li><a href="#MyWork">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Links</a></li>
+    <div class="container">
+        <br />
+        <br />
+        <div class="row">
+            <div data-role="panel"
+                 class="cell-2"
+                 data-title-caption="Settings"
+                 data-collapsible="true">
+                <ul data-tabs-position="vertical right" data-role="tabs" class="cell">
+                    <li><a href="#MyWork">PROFILE</a></li>
+                    <li><a href="#Accaunt">ACCAUNT</a></li>
 
-            <div id="MyWork">
-                <h2 style="text-align:center">PAGE IN DEV</h2>
+                </ul>
             </div>
-        </ul>
+
+            <div id="MyWork" class="cell">
+                @using (Html.BeginForm("Profile", "Home", FormMethod.Post))
+                {
+                    @Html.TextBoxFor(model => Model.user.ID, new { @type="hidden" })
+
+                    @Html.TextBoxFor(model => Model.user.FullName, new { @class = "cell-12", data_role = "input", data_prepend = "User name: " })
+                    <br />
+                    @Html.TextBoxFor(model => Model.user.AvaPath, new { @class = "cell-12", data_role = "input", data_prepend = "Ava path: " })
+                    <br />
+                    @Html.DropDownListFor(Model => Model.city_id, new SelectList(Model.selectListItems, "Value", "Text"), new { @class = "cell-12", data_role = "select" })
+                    <br />
+                    @Html.PasswordFor(model => Model.user.Password, new { @class = "cell-12", data_role = "input", data_prepend = "Confirm password: " })
+                    <br />
+                    <button class="button primary outline cell-12">SAVE</button>
+                }
+
+            </div>
         </div>
-</div>
+       
+    </div>
+

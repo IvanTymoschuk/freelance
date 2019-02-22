@@ -56,5 +56,5 @@
         <h3>@Model.user.FullName</h3>
         <h5>Raiting: @Model.user.Raiting</h5>
         <h5>City: @Model.user.City.Name</h5>
-        @Html.ActionLink("EDIT PROFILE", null, null, new { @class = "button primary outline cell-3" })
+        <a class="button primary outline cell-3" href="/home/profile/@Model.user.ID">EDIT PROFILE </a>
     </div>

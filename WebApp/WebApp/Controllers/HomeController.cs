@@ -52,11 +52,37 @@ namespace WebApp.Controllers
 
             return View();
         }
-        public ActionResult Profile()
+        public ActionResult Profile(int id)
         {
-            ViewBag.Message = "Your application description page.";
+            using (Context ctx = new Context())
+            {
+                User user = ctx.Users.Include("City").FirstOrDefault(x => x.ID == id);
+                if (user == null)
+                {
+                    return HttpNotFound($"User with id [ {id} ] NOT FOUND");
+                }
+                ProfileModel model = new ProfileModel();
+                model.user = user;
+                foreach (var el in ctx.Cities)
+                    model.selectListItems.Add(new SelectListItem() { Value = el.Id.ToString(), Text = el.Name });
+                return View(model);
+            }
 
-            return View();
+        }
+        [HttpPost]
+        public ActionResult Profile(ProfileModel model)
+        {
+            using (Context ctx = new Context())
+            {
+                if (ctx.Users.FirstOrDefault(x => x.ID == model.user.ID).Password == model.user.Password)
+                {
+                    ctx.Users.FirstOrDefault(x => x.ID == model.user.ID).FullName = model.user.FullName;
+                    ctx.Users.FirstOrDefault(x => x.ID == model.user.ID).AvaPath = model.user.AvaPath;
+                    ctx.Users.FirstOrDefault(x => x.ID == model.user.ID).City = ctx.Cities.FirstOrDefault(x => x.Id == model.city_id);
+                    ctx.SaveChanges();
+                }
+                return Redirect("/home/UserInfo/" + model.user.ID);
+            }
         }
         public ActionResult CreateAD()
         {
