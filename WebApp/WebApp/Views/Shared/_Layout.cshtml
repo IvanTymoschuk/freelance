@@ -16,11 +16,11 @@
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
         <li>@Html.ActionLink("CreateAdvertisement", "CreateAD", "Home")</li>
     </ul>
- 
+
     @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/MetroUI")
     @RenderSection("scripts", required: false)
 </body>
+    @Scripts.Render("~/bundles/jquery")
 </html>
