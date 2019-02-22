@@ -10,10 +10,10 @@ namespace DAL
     {
         public Category()
         {
-            JoobsID = new List<int>();
+            Jobs = new List<int>();
         }
         public int ID { get; set; }
         public string Name { get; set; }
-        public  ICollection<int> JoobsID { get; set; }
+        public  ICollection<int> Jobs { get; set; }
     }
 }
