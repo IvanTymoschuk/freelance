@@ -7,18 +7,23 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .app-bar-menu li {
+            list-style: none !important;
+        }
+    </style>
 </head>
 <body>
 
-    <div data-role="appbar" data-expand-point="md"  class="bg-black fg-white app-bar fixed-top pos-absolute">
+    <div data-role="appbar" data-expand-point="md" class="bg-black fg-white app-bar fixed-top pos-absolute">
         <a href="#" class="brand no-hover">
             <span>
                 Freelance<sup>.com</sup>
             </span>
         </a>
-        
+
         <ul class="app-bar-menu">
-            <li  onmouseover="this.style.backgroundColor='#555';" onmouseout="this.style.backgroundColor='black';">@Html.ActionLink("Home", "Index", "Home")</li>
+            <li onmouseover="this.style.backgroundColor='#555';" onmouseout="this.style.backgroundColor='black';">@Html.ActionLink("Home", "Index", "Home")</li>
             <li onmouseover="this.style.backgroundColor='#555';" onmouseout="this.style.backgroundColor='black';">@Html.ActionLink("About", "About", "Home")</li>
             <li onmouseover="this.style.backgroundColor='#555';" onmouseout="this.style.backgroundColor='black';">@Html.ActionLink("Contact", "Contact", "Home")</lionmouseover="this.style.backgroundColor='#555';">
         </ul>
@@ -27,8 +32,8 @@
     <br />
     @RenderBody()
 
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/MetroUI")
     @RenderSection("scripts", required: false)
 </body>
-    @Scripts.Render("~/bundles/jquery")
 </html>
