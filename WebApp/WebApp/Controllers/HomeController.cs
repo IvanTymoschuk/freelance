@@ -86,9 +86,17 @@ namespace WebApp.Controllers
         }
         public ActionResult CreateAD()
         {
-            ViewBag.Message = "Your application description page.";
+            using (Context ctx = new Context())
+            {
+                var model = new JobsListModel()
+                {
 
-            return View();
+                    jobs = ctx.Jobs.Include("Category").Include("City").ToList(),
+                    Categories = ctx.Categories.ToList(),
+                    Cities = ctx.Cities.ToList()
+                };
+                return View(model);
+            };
         }
         public ActionResult Contact()
         {

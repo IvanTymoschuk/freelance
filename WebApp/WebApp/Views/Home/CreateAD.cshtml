@@ -1,45 +1,132 @@
-﻿@{
+﻿@model WebApp.Models.JobsListModel
+@{
     ViewBag.Title = "CreateAD";
 
 }
 <style>
-  .stCardInput{
-    height:150px;
-    text-emphasis-color:lightgreen;
-  }
-   
+    .stCardInput {
+        height: 100px;
+        text-emphasis-color: lightgreen;
+    }
 
+    .stMenuleft {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 4px;
+    }
+
+    .stTextCardHead {
+        font-size: 15px;
+    }
+
+    .stTextCardFooter {
+        color: red;
+    }
+
+    .stlCard {
+        width: 300px;
+    }
 </style>
 
-    <div class="text-center">
-        <h1> CreateAdvertisment</h1>
+<div class="text-center">
+    <h1> CreateAdvertisment</h1>
 
+</div>
+<div class="float-left" style="width : 40%;">
+    <div class="stMenuleft">
+        <a class="button stMenuleft" style="height:70px " id="context_toggle"><h6><span class="mif-warning ani-flash"></span> Before you add your advertisement you must do few this requirements:<span class="mif-warning ani-flash"></span></h6>  </a>
+        <ul class="d-menu " data-role="dropdown" data-toggle-element="#context_toggle">
+            @*class="context"*@
+            <li><a href="#">You must be logged in.<span class="mif-user icon"></span></a></li> @*Must be href to log in*@
+            <li><a href="">You must fill all your profile.<span class="mif-profile icon"></span></a></li>  @*Must be href to profile*@
+            <li><a href="#">You must confirm your e-mail.<span class="mif-mail icon"></span></a></li>    @*Must be href to profile*@
+            <li><a href="#">You must be registered on the site for more than a week.<span class="mif-calendar icon"></span></a></li>
+            <li class="divider"></li>
+            <li><a href="#"><span class="mif-books icon"></span>Example AD.</a></li>  @*Must be href to example page*@
+            <li><a href="#"><span class="mif-help icon"></span>Help.</a></li> @*Must be href to page help*@
+        </ul>
     </div>
-    <div class="float-left" style="width : 30%;">
-        <h3> Before you add your advertisement you must do few this requirements:</h3>
+    @*<h3> Before you add your advertisement you must do few this requirements:</h3>
         <ul>
             <li>You must be logged in.</li>
             <li>You must confirm your e-mail.</li>
             <li>You must be registered on the site for more than a week.</li>
-        </ul>
-    </div>
+        </ul>*@
+</div>
 
 
-    <div class="float-left" style="width: 65%; margin-left:10px;">
-
-
-        <div class="card">
-            <div class="card-header">
-               <p style="color:lightgreen"> In this field, you must enter short description about theme of the project or the task.</p>
-            </div>
-            <div class="card-content p-2">
-                <input class="stCardInput" maxlength="3000"  type="text" data-role="input" data-prepend="Description: ">
-            </div>
-            <div class="card-footer">
-                <p style="color:lightgreen">The text should be less than 3000 symbols</p>
-            </div>
+<div class="float-left" style="width: 55%; ">
+    <div class="card">
+        <div class="card-header stTextCardHead">
+            <p> <h5> In this field, you must enter Name your project or task.</h5></p>
         </div>
-
-
-
+        <div class="card-content p-2">
+            <input class="stCardInput" maxlength="3000" id="Name" Name="Name" type="text" data-role="input" data-prepend="Description: ">
+        </div>
+        <div class="card-footer stTextCardFooter">
+            <p>The text should be more than 2 symbols.</p> @*Valitation message*@
+        </div>
     </div>
+
+    <div class="card">
+        <div class="card-header stTextCardHead">
+            <p> <h5> In this field, you must enter short Description about theme of the project or the task.</h5></p>
+        </div>
+        <div class="card-content p-2">
+            <input class="stCardInput" maxlength="3000" id="Description" Name="Description" type="text" data-role="input" data-prepend="Description: ">
+        </div>
+        <div class="card-footer stTextCardFooter">
+            <p>The text should be less than 3000 symbols.</p> @*Valitation message*@
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header stTextCardHead">
+            <p> <h5> In this field, you must select the category in which your project or task belongs.</h5></p>
+        </div>
+        <div class="card-content p-2">
+
+            <select data-role="select">
+                @{
+                    foreach (var el in Model.Categories)
+                    {
+                        <option>@el.Name</option>
+                    }
+                }
+            </select>
+
+        </div>
+        <div class="card-footer stTextCardFooter">
+            <p>Not selected category</p> @*Valitation message*@
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header stTextCardHead">
+            <p><h5> In this field, you must select the City in which your project or task will be create.</h5></p>
+        </div>
+        <div class="card-content p-2">
+
+            <select data-role="select">
+                @{
+                    foreach (var el in Model.Cities)
+                    {
+                        <option>@el.Name</option>
+                    }
+                }
+            </select>
+
+        </div>
+        <div class="card-footer stTextCardFooter">
+            <p>Not selected city</p> @*Valitation message*@
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>
