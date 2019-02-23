@@ -10,7 +10,7 @@ namespace WebApp.Models
         public List<DAL.Job> jobs { get; set; }
         public List<DAL.Category> Categories { get; set; }
         public List<DAL.City> Cities { get; set; }
-
+        
 
     }
 }

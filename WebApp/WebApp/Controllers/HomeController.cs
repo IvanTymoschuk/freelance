@@ -84,7 +84,7 @@ namespace WebApp.Controllers
                 return Redirect("/home/UserInfo/" + model.user.ID);
             }
         }
-        public ActionResult CreateAD()
+        public ActionResult CreateAD(/*JobsListModel model*/)
         {
             using (Context ctx = new Context())
             {
@@ -97,6 +97,26 @@ namespace WebApp.Controllers
                 };
                 return View(model);
             };
+
+
+            //////// errrrrrrrorrrr
+
+            //using (Context ctx = new Context())
+            //{
+            //    //Job job = new Job();
+            //    //JobsListModel jobs = new JobsListModel();
+
+            //    if (ctx.Users.FirstOrDefault(x => x.ID == model.jobs.ID).Name == model.jobs.Name)
+            //    {
+            //        ctx.Users.FirstOrDefault(x => x.ID == model.user.ID).FullName = model.user.FullName;
+            //        ctx.Users.FirstOrDefault(x => x.ID == model.user.ID).AvaPath = model.user.AvaPath;
+            //        ctx.Users.FirstOrDefault(x => x.ID == model.user.ID).City = ctx.Cities.FirstOrDefault(x => x.Id == model.city_id);
+            //        ctx.SaveChanges();
+            //    }
+            //    return Redirect("/home/UserInfo/" + model.jobs.ID);
+            //}
+
+
         }
         public ActionResult Contact()
         {
