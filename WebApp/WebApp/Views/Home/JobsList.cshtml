@@ -16,7 +16,7 @@
             @Html.TextBox("searchtextbox", "", new { placeholder = "Search", data_role = "input", data_search_button = "true" })
         </div>
         <div class="cell-2 offset-2">
-            <button class="button success">Create Job</button>
+            <button class="button">Create Job</button>
         </div>
         </div>
         <div class="row">
@@ -41,20 +41,21 @@
 
 
             @foreach (var el in Model.jobs)
-            {
-                <div class="card">
-                    <div class="card-header">
-                        @el.Name
-                    </div>
-                    <div class="card-content p-2">
-                        Card with header and footer...
-                    </div>
-                    <div class="card-footer">
-                        @el.Salary
-                    </div>
-                </div>
-            }
+            { <div class="row container">
+                  
+                      <div class="cell-9" style="border-style: solid; border-width: 1px; border-color: lightgrey">
+                          <p>@el.Name</p>
+                      </div>
+                      <div class="cell-3" style="border-style: solid; border-width: 1px;  border-color: lightgrey">
+                          <p>@el.Salary</p>
+
+                      </div>
+                  </div>
+           
+
+    
+    }
 
 
-        </div>
+</div>
     </div>
