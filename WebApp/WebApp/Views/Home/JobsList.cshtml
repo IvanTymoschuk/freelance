@@ -1,55 +1,61 @@
-﻿@model WebApp.Models.JobsListModel
+﻿@using System.Web.UI.WebControls
+@model WebApp.Models.JobsListModel
 @{
     ViewBag.Title = "JobsList";
 }
 
 
 
-
-<div class="grid">
+<br/>
+<div class="grid container">
     <div class="row">
-    
-        <h2 > JobsList</h2>
-    </div>
-    <div class="row container ">
         <div class="cell-4">
-            <select data-role="select">
-                @foreach (var el in Model.Categories)
-                {
-                    <option>@el.Name</option>
-                }
-            </select>
+            <h2> JobsList</h2>
         </div>
         <div class="cell-4">
-            <select data-role="select">
-                @foreach (var el in Model.Cities)
-                {
-                    <option>@el.Name</option>
-                }
-            </select>
+            @Html.TextBox("searchtextbox", "", new { placeholder = "Search", data_role = "input", data_search_button = "true" })
         </div>
-    </div>
-    <div class="row">
+        <div class="cell-2 offset-2">
+            <button class="button">Create Job</button>
+        </div>
+        </div>
+        <div class="row">
+            <div class="cell-4">
+                <select data-role="select">
+                    @foreach (var el in Model.Categories)
+                    {
+                        <option>@el.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="cell-4">
+                <select data-role="select">
+                    @foreach (var el in Model.Cities)
+                    {
+                        <option>@el.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row">
 
-        <table class="container table">
-            <thead>
-            <tr>
-                <td>Name</td>
-                <td>Salary</td>
-                <td>Category</td>
 
-            </tr>
-            </thead>
-            <tbody></tbody>
             @foreach (var el in Model.jobs)
-            {
-                <tr>
-                    <td>@el.Name</td>
-                    <td>@el.Salary</td>
-                    <td>@el.Category.Name</td>
-                </tr>
-            }
-        </table>
+            { <div class="row container">
+                  
+                      <div class="cell-9" style="border-style: solid; border-width: 1px; border-color: lightgrey">
+                          <p>@el.Name</p>
+                      </div>
+                      <div class="cell-3" style="border-style: solid; border-width: 1px;  border-color: lightgrey">
+                          <p>@el.Salary</p>
 
-    </div>
+                      </div>
+                  </div>
+           
+
+    
+    }
+
+
 </div>
+    </div>

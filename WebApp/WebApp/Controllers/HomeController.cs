@@ -52,6 +52,13 @@ namespace WebApp.Controllers
 
             return View("About");
         }
+
+        public ActionResult JobPage()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
         public ActionResult Profile(int id)
         {
             using (Context ctx = new Context())
@@ -124,6 +131,7 @@ namespace WebApp.Controllers
 
             return View();
         }
+
 
         public ActionResult JobsList()
         {
