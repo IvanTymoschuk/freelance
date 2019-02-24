@@ -59,7 +59,7 @@ namespace WebApp.Controllers
 
             return View();
         }
-        public ActionResult Profile(int id)
+        public ActionResult Profile(int id) //В мене крашить
         {
             using (Context ctx = new Context())
             {
