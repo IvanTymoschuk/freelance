@@ -1,0 +1,45 @@
+﻿@model WebApp.Models.TicketModel
+@{
+    ViewBag.Title = "Requests";
+}
+    <div class="container">
+        <br />
+        <h2 style="text-align:center">@Model.ticket.ID : @Model.ticket.Theme</h2>
+        <h4>Status: @Model.ticket.Status</h4>
+        <h4>LastUpdate: @Model.ticket.LastUpdate</h4>
+        <br />
+        <hr />
+        <br />
+        @foreach (var el in Model.ticketMSGs)
+        {
+            if (@el.UserID == @Model.uid)
+            {
+                <div class="card cell-8 fg-white text-bold float-left" style="font-size:16px; text-align:center">
+                    <div class="card-header">
+                        <p style="font-size:20px; text-align:center">You</p>
+                    </div>
+                    <div class="card-content p-2">
+                        @el.Text
+                    </div>
+                    <div class="card-footer">
+                        @el.Date
+                    </div>
+                </div>
+            }
+            else
+            {
+               
+                <div class="card cell-8 fg-white text-bold float-right" style="font-size:16px; text-align:center">
+                    <div class="card-header">
+                        <p style="font-size:20px; text-align:center" class="fg-yellow">Fellow Worker</p>
+                    </div>
+                    <div class="card-content p-2">
+                        @el.Text
+                    </div>
+                    <div class="card-footer">
+                        @el.Date
+                    </div>
+                </div>
+            }
+        }
+    </div>

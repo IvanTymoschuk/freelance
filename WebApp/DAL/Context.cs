@@ -1,5 +1,6 @@
 namespace DAL
 {
+    using DAL.Models;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -27,7 +28,8 @@ namespace DAL
          public virtual DbSet<Category> Categories { get; set; }
          public virtual DbSet<ConfirmCode> ConfirmCodes { get; set; }
         public virtual DbSet<City> Cities { get; set; }
-
+        public virtual DbSet<Ticket> Tickets { get; set; }
+        public virtual DbSet<TicketMSG> TicketMSGs { get; set; }
     }
     class MyContextInitializer : DropCreateDatabaseIfModelChanges<Context>
     {
