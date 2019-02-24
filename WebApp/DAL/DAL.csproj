@@ -56,6 +56,7 @@
     <Compile Include="Models\ConfirmCode.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\Ticket.cs" />
     <Compile Include="Repos.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

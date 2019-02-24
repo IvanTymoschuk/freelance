@@ -12,5 +12,6 @@ namespace DAL
         public bool IsEmployee { get; set; }
         public string AvaPath { get; set; }
         public double Raiting { get; set; }
+        public string Role { get; set; } // Admin / support / User
     }
 }
