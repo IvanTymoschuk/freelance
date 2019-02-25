@@ -16,6 +16,15 @@ namespace WebApp.Controllers
            
             return View();
         }
+
+        public ActionResult Error(string id, string ticket)
+        {
+            if (string.IsNullOrEmpty(id))
+                return Redirect("/");
+            ViewData["StatusError"] = id + ".";
+            ViewData["ERRORMSG"] = ticket + ".";
+            return View();
+        }
         public ActionResult Ticket(int id, int ticket)
         {
             using (Context ctx = new Context())
