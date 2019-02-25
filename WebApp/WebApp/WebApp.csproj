@@ -152,6 +152,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SupportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,7 +227,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\MyTickets.cshtml" />
+    <Content Include="Views\Support\MyTickets.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\metro.min.js.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -243,8 +244,8 @@
     <Content Include="Views\Home\ProfileEdit.cshtml" />
     <Content Include="Views\Home\CreateAD.cshtml" />
     <Content Include="Views\Home\JobPage.cshtml" />
-    <Content Include="Views\Home\NewTicket.cshtml" />
-    <Content Include="Views\Home\Ticket.cshtml" />
+    <Content Include="Views\Support\NewTicket.cshtml" />
+    <Content Include="Views\Support\Ticket.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
